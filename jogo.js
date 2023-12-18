@@ -80,3 +80,15 @@ function jogar(linha, coluna) {
     }
 }
 
+// Função para iniciar o jogo
+function iniciarJogo() {
+    if (jogadorAtual === 1) {
+        let linha, coluna;
+        do {
+            linha = Math.floor(Math.random() * 3);
+            coluna = Math.floor(Math.random() * 3);
+        } while (tabela1[linha][coluna] !== undefined);
+        jogar(linha, coluna);
+    }
+}
+
