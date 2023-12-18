@@ -63,4 +63,20 @@ function jogar(linha, coluna) {
         }
         document.getElementById('pontuacao2').textContent = "Pontuação do Jogador 2: " + calcularPontuacao(tabela2);
     }
+    
+    // Verifica se o jogo terminou
+    if (todasCasasPreenchidas(tabela1) || todasCasasPreenchidas(tabela2)) {
+        let pontuacao1 = calcularPontuacao(tabela1);
+        let pontuacao2 = calcularPontuacao(tabela2);
+        if (pontuacao1 > pontuacao2) {
+            alert("O jogo terminou! O vencedor é o Jogador 1 com " + pontuacao1 + " pontos!");
+        } else if (pontuacao2 > pontuacao1) {
+            alert("O jogo terminou! O vencedor é o Jogador 2 com " + pontuacao2 + " pontos!");
+        } else {
+            alert("O jogo terminou! É um empate!");
+        }
+    } else {
+        jogadorAtual = 3 - jogadorAtual;
+    }
 }
+
