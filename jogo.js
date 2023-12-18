@@ -17,3 +17,22 @@ let dado = null;
 function rolarDado() {
     return Math.floor(Math.random() * 6) + 1;
 }
+
+// Função para calcular a pontuação
+function calcularPontuacao(tabela) {
+    let pontuacao = 0;
+    for (let j = 0; j < 3; j++) {
+        let contagem = [0, 0, 0, 0, 0, 0, 0];
+        for (let i = 0; i < 3; i++) {
+            if (tabela[i][j] !== undefined) {
+                contagem[tabela[i][j]]++;
+            }
+        }
+        for (let k = 1; k <= 6; k++) {
+            if (contagem[k] > 0) {
+                pontuacao += k * contagem[k];
+            }
+        }
+    }
+    return pontuacao;
+}
