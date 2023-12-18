@@ -18,6 +18,18 @@ function rolarDado() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
+// Função para verificar se todas as casas estão preenchidas
+function todasCasasPreenchidas(tabela) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (tabela[i][j] === undefined) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 // Função para calcular a pontuação
 function calcularPontuacao(tabela) {
     let pontuacao = 0;
@@ -63,7 +75,7 @@ function jogar(linha, coluna) {
         }
         document.getElementById('pontuacao2').textContent = "Pontuação do Jogador 2: " + calcularPontuacao(tabela2);
     }
-    
+
     // Verifica se o jogo terminou
     if (todasCasasPreenchidas(tabela1) || todasCasasPreenchidas(tabela2)) {
         let pontuacao1 = calcularPontuacao(tabela1);
@@ -80,6 +92,7 @@ function jogar(linha, coluna) {
     }
 }
 
+
 // Função para iniciar o jogo
 function iniciarJogo() {
     if (jogadorAtual === 1) {
@@ -92,7 +105,7 @@ function iniciarJogo() {
     }
 }
 
-// Adiciona clique para cada célula da tabela do jogador 2
+// Adiciona evento de clique para cada célula da tabela do jogador 2
 for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
         document.getElementById('tabela2').rows[i].cells[j].onclick = function() {
