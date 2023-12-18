@@ -51,5 +51,16 @@ function jogar(linha, coluna) {
             }
         }
         document.getElementById('pontuacao1').textContent = "Pontuação do Jogador 1: " + calcularPontuacao(tabela1);
+    } else {
+        tabela2[linha][coluna] = dado;
+        document.getElementById('tabela2').rows[linha].cells[coluna].textContent = dado;
+        for (let i = 0; i < 3; i++) {
+            if (tabela1[i][coluna] === dado) {
+                delete tabela1[i][coluna];
+                document.getElementById('tabela1').rows[i].cells[coluna].textContent = "";
+                document.getElementById('pontuacao1').textContent = "Pontuação do Jogador 1: " + (calcularPontuacao(tabela1) - dado);
+            }
+        }
+        document.getElementById('pontuacao2').textContent = "Pontuação do Jogador 2: " + calcularPontuacao(tabela2);
     }
 }
