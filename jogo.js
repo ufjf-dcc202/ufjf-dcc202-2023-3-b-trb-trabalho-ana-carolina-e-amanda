@@ -36,3 +36,20 @@ function calcularPontuacao(tabela) {
     }
     return pontuacao;
 }
+
+// Função para jogar
+function jogar(linha, coluna) {
+    let dado = Math.floor(Math.random() * 6) + 1;
+    if (jogadorAtual === 1) {
+        tabela1[linha][coluna] = dado;
+        document.getElementById('tabela1').rows[linha].cells[coluna].textContent = dado;
+        for (let i = 0; i < 3; i++) {
+            if (tabela2[i][coluna] === dado) {
+                delete tabela2[i][coluna];
+                document.getElementById('tabela2').rows[i].cells[coluna].textContent = "";
+                document.getElementById('pontuacao2').textContent = "Pontuação do Jogador 2: " + (calcularPontuacao(tabela2) - dado);
+            }
+        }
+        document.getElementById('pontuacao1').textContent = "Pontuação do Jogador 1: " + calcularPontuacao(tabela1);
+    }
+}
