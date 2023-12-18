@@ -92,3 +92,14 @@ function iniciarJogo() {
     }
 }
 
+// Adiciona clique para cada célula da tabela do jogador 2
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        document.getElementById('tabela2').rows[i].cells[j].onclick = function() {
+            if (jogadorAtual === 2 && this.textContent === "") {
+                jogar(i, j);
+            }
+        };
+    }
+}
+
